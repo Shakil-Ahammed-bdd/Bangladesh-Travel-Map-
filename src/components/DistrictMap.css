@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
+/* ---------- Tokens ---------- */
+.bdmap-wrap {
+  --bg: #EFEAE0;
+  --panel: #F7F4ED;
+  --ink: #22201B;
+  --ink-soft: #5B5748;
+  --line: #DCD5C4;
+  --green: #0F5C46;
+  --green-soft: #3E8768;
+  --sand: #D9D2C3;
+  --on-accent: #FAF8F2;
+  --focus: #1C6FB0;
+  --card-width: 680px; /* width of the map card on laptop/desktop (it is always 3:4 portrait) — raise it for a bigger map */
+  --gap: clamp(10px, 1.6vw, 20px);
+  --pad: clamp(12px, 2.4vw, 28px);
+
+  /* Full screen on every device */
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: calc(var(--pad) + env(safe-area-inset-top, 0px))
+           calc(var(--pad) + env(safe-area-inset-right, 0px))
+           calc(var(--pad) + env(safe-area-inset-bottom, 0px))
+           calc(var(--pad) + env(safe-area-inset-left, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans Bengali', 'Inter', system-ui, sans-serif;
+  text-align: left;
+  box-sizing: border-box;
+}
+.bdmap-wrap *, .bdmap-wrap *::before, .bdmap-wrap *::after { box-sizing: border-box; }
+
+/* ---------- Navbar ---------- */
+.bdmap-lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--panel); }
+.bdmap-lang button {
+  border: none; background: none; color: var(--ink-soft); padding: 8px 16px; min-height: 36px;
+  font-family: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+}
+.bdmap-lang button.active { background: var(--green); color: var(--on-accent); }
+.bdmap-lang button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* nav bar */
+.bdmap-nav {
+  position: relative; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+}
+.bdmap-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); min-width: 0; }
+.bdmap-brand-mark {
+  flex: none; width: 34px; height: 34px; border-radius: 10px; background: var(--green); color: var(--on-accent);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.bdmap-brand-mark svg { width: 20px; height: 20px; }
+.bdmap-brand-name { font-family: 'Tiro Bangla', serif; font-size: clamp(1.05rem, 2.4vw, 1.35rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bdmap-nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.bdmap-nav-links a {
+  display: block; padding: 8px 14px; border-radius: 999px; color: var(--ink-soft); text-decoration: none;
+  font-size: 0.92rem; font-weight: 600;
+}
+.bdmap-nav-links a:hover { background: var(--bg); color: var(--ink); }
+.bdmap-nav-links a:focus-visible, .bdmap-brand:focus-visible, .bdmap-menu-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bdmap-nav-right { display: flex; align-items: center; gap: 10px; }
+.bdmap-menu-btn {
+  display: none; width: 40px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg); cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+}
+.bdmap-menu-btn span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); }
+
+@media (max-width: 699px) {
+  .bdmap-menu-btn { display: inline-flex; }
+  .bdmap-nav-links {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; align-items: stretch;
+    padding: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .bdmap-nav-links.open { display: flex; }
+  .bdmap-nav-links a { padding: 12px 14px; font-size: 1rem; }
+  .bdmap-brand-name { max-width: 30vw; }
+}
+
+/* ---------- Banner ---------- */
+.bdmap-banner {
+  position: relative; overflow: hidden; border-radius: 18px; color: #FAF8F2;
+  background: linear-gradient(135deg, #0B4A38 0%, #127A58 100%);
+  padding: clamp(22px, 4vw, 48px); min-height: clamp(210px, 28vw, 300px);
+  display: flex; align-items: center;
+}
+.bdmap-banner-body { position: relative; z-index: 1; max-width: 560px; }
+.bdmap-banner-eyebrow { margin: 0 0 8px; font-size: clamp(0.8rem, 1.4vw, 0.95rem); font-weight: 600; letter-spacing: 0.02em; opacity: 0.85; }
+.bdmap-banner-title { margin: 0 0 10px; font-family: 'Tiro Bangla', serif; font-weight: 400; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.1; }
+.bdmap-banner-text { margin: 0 0 18px; font-size: clamp(0.9rem, 1.6vw, 1.05rem); line-height: 1.6; opacity: 0.92; }
+.bdmap-banner-actions { display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; }
+.bdmap-cta {
+  border: none; border-radius: 999px; padding: 12px 24px; min-height: 44px; cursor: pointer;
+  background: #FAF8F2; color: #0B4A38; font-family: inherit; font-size: 0.95rem; font-weight: 700;
+}
+.bdmap-cta:hover { background: #fff; }
+.bdmap-cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.bdmap-banner-stat { font-size: 0.9rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.16); }
+.bdmap-banner-map {
+  position: absolute; z-index: 0; right: clamp(-30px, 3vw, 56px); top: 50%; transform: translateY(-50%);
+  height: 118%; width: auto; opacity: 0.28; pointer-events: none;
+}
+.bdmap-banner-map path { fill: rgba(255,255,255,0.45); stroke: #127A58; stroke-width: 0.8; }
+.bdmap-banner-map path.on { fill: #FAF8F2; }
+@media (min-width: 700px) { .bdmap-banner-map { opacity: 0.9; height: 112%; } }
+
+/* ---------- Layout: mobile first (stacked, map card pinned on top) ---------- */
+.bdmap-layout { flex: 1; display: flex; flex-direction: column; gap: var(--gap); min-height: 0; }
+.bdmap-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+
+.bdmap-map-panel {
+  order: -1;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  height: 62vh;
+  height: 62dvh;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bdmap-map-scroll { position: relative; flex: 1; min-width: 0; min-height: 0; }
+.bdmap-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.bdmap-sidebar { padding: 14px; }
+.bdmap-stage { display: contents; }
+#bdmap-districts { scroll-margin-top: calc(62dvh + 16px); }
+.bdmap-map-panel { order: -2; }
+.bdmap-controls { order: -1; display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; }
+
+@media (min-width: 600px) {
+  #bdmap-districts { scroll-margin-top: calc(68dvh + 16px); }
+  .bdmap-map-panel { height: 68vh; height: 68dvh; padding: 14px 18px; gap: 10px; }
+}
+/* Laptop / desktop: a big portrait (3:4) map card, controls under it, list pinned on the left. */
+@media (min-width: 900px) {
+  .bdmap-wrap { height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; }
+  .bdmap-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 400px) 1fr;
+    align-items: start;
+  }
+  .bdmap-stage { display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
+  .bdmap-map-panel {
+    order: 0; position: static; height: auto; aspect-ratio: 3 / 4;
+    width: min(100%, var(--card-width)); padding: 22px 26px; gap: 14px;
+  }
+  .bdmap-controls { order: 0; width: min(100%, var(--card-width)); }
+  .bdmap-nav { position: sticky; top: 10px; }
+  #bdmap-map, #bdmap-districts { scroll-margin-top: 90px; }
+  .bdmap-sidebar {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 106px);
+    max-height: calc(100dvh - 106px);
+    overflow-y: auto;
+    padding: 16px;
+  }
+}
+@media (max-height: 480px) and (max-width: 899px) {
+  .bdmap-map-panel { height: 88vh; height: 88dvh; }
+}
+
+/* ---------- Map card: header ---------- */
+.bdmap-card-head { display: flex; align-items: center; gap: clamp(10px, 2vw, 22px); }
+.bdmap-avatar {
+  flex: none;
+  width: clamp(46px, 8vw, 96px);
+  aspect-ratio: 1;
+  border-radius: 22%;
+  border: clamp(2px, 0.4vw, 4px) solid var(--green);
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+}
+.bdmap-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bdmap-avatar-icon { width: 62%; height: 62%; opacity: 0.85; }
+.bdmap-head-text { flex: 1; min-width: 0; }
+.bdmap-eyebrow { color: var(--ink-soft); font-size: clamp(0.7rem, 1.3vw, 0.92rem); font-weight: 500; margin: 0 0 2px; }
+.bdmap-title {
+  font-size: clamp(1rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.2; margin: 0;
+  overflow-wrap: anywhere;
+}
+.bdmap-count {
+  flex: none; font-size: clamp(1.7rem, 5vw, 3.2rem); font-weight: 700; color: var(--green); line-height: 1;
+}
+.bdmap-count span { font-size: 0.5em; font-weight: 500; color: var(--ink-soft); }
+
+/* ---------- Map card: footer ---------- */
+.bdmap-progress { width: 100%; height: clamp(7px, 1.2vw, 12px); background: var(--line); border-radius: 999px; overflow: hidden; }
+.bdmap-progress-fill { height: 100%; background: var(--green); transition: width 0.3s ease; }
+.bdmap-foot-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap;
+  margin-top: 6px; font-size: clamp(0.78rem, 1.5vw, 1rem);
+}
+.bdmap-foot-row strong { font-weight: 700; }
+.bdmap-foot-row span { color: var(--ink-soft); }
+
+/* ---------- Profile (name + photo) ---------- */
+.bdmap-profile { display: flex; flex-direction: column; gap: 10px; padding-bottom: 14px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+.bdmap-profile input[type="text"] {
+  width: 100%; min-width: 0; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--ink); font-family: inherit; font-size: 16px;
+}
+.bdmap-profile input[type="text"]:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.bdmap-photo-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.bdmap-btn {
+  display: inline-flex; align-items: center; min-height: 38px; padding: 8px 16px;
+  border: 1px solid var(--green); border-radius: 999px; background: none; color: var(--green);
+  font-family: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+}
+.bdmap-btn:hover { background: var(--green); color: var(--on-accent); }
+.bdmap-btn:focus-within, .bdmap-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bdmap-btn.ghost { border-color: var(--line); color: var(--ink-soft); }
+.bdmap-btn.ghost:hover { background: var(--line); color: var(--ink); }
+.bdmap-error { margin: 0; color: var(--err, #B4383A); font-size: 0.82rem; }
+
+/* ---------- Downloads ---------- */
+.bdmap-downloads { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bdmap-dl-label { color: var(--ink-soft); font-size: 0.85rem; font-weight: 500; margin-right: 2px; }
+.bdmap-btn.small { min-height: 34px; padding: 5px 14px; font-size: 0.82rem; letter-spacing: 0.03em; }
+.bdmap-btn:disabled { opacity: 0.55; cursor: progress; }
+.bdmap-btn:disabled:hover { background: none; color: var(--green); }
+
+/* ---------- Search & bulk actions ---------- */
+.bdmap-search-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.bdmap-search-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 16px; /* prevents iOS zoom on focus */
+}
+.bdmap-search-row input:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+
+.bdmap-bulk-row { display: flex; gap: 18px; margin-bottom: 12px; font-size: 0.88rem; flex-wrap: wrap; }
+.bdmap-bulk-row button {
+  background: none; border: none; color: var(--green); font-weight: 600;
+  cursor: pointer; padding: 6px 0; font-family: inherit; font-size: inherit;
+}
+.bdmap-bulk-row button:hover { text-decoration: underline; }
+.bdmap-bulk-row button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Divisions & chips ---------- */
+.bdmap-division { border-top: 1px solid var(--line); padding: 10px 0; }
+.bdmap-division:first-of-type { border-top: none; }
+.bdmap-division summary {
+  cursor: pointer; font-weight: 600; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 2px;
+}
+.bdmap-division summary > span:first-child { flex: 1; }
+.bdmap-division summary::-webkit-details-marker { display: none; }
+.bdmap-arrow { color: var(--ink-soft); transition: transform 0.15s; font-size: 0.8em; }
+.bdmap-division[open] .bdmap-arrow { transform: rotate(90deg); }
+.bdmap-div-link { font-size: 0.8rem; font-weight: 500; color: var(--green); cursor: pointer; padding: 6px 4px; }
+.bdmap-div-count { font-weight: 500; color: var(--ink-soft); font-size: 0.85em; }
+
+.bdmap-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.bdmap-chip {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 14px;
+  min-height: 40px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.bdmap-chip:hover { border-color: var(--chip-hover, var(--green-soft)); }
+.bdmap-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bdmap-chip.visited { background: var(--chip-visited, var(--green)); border-color: var(--chip-visited, var(--green)); color: var(--chip-on, var(--on-accent)); }
+.bdmap-empty { color: var(--ink-soft); font-size: 0.88rem; padding: 6px 2px; }
+
+/* ---------- Map ---------- */
+.bdmap-svg path {
+  fill: var(--sand);
+  stroke: var(--panel);
+  stroke-width: 0.8;
+  cursor: pointer;
+  transition: fill 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: hover) { .bdmap-svg path:hover { fill: var(--green-soft); } }
+.bdmap-svg path.visited { fill: var(--green); }
+.bdmap-svg path:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+
+.bdmap-note { color: var(--ink-soft); font-size: 0.82rem; text-align: center; }
+@media (min-width: 900px) { .bdmap-note { display: none; } }
+
+/* ---------- District name labels + toggle ---------- */
+.bdmap-labels { pointer-events: none; }
+.bdmap-labels text {
+  font-family: inherit; font-size: 9.5px; font-weight: 700; fill: var(--ink);
+  stroke: var(--panel); stroke-width: 3.2px; paint-order: stroke; stroke-linejoin: round;
+}
+.bdmap-dot { fill: #E0343F; stroke: var(--panel); stroke-width: 1.1px; }
+
+.bdmap-switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.92rem; font-weight: 600; user-select: none; }
+.bdmap-switch-state { font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); }
+.bdmap-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.bdmap-switch-track {
+  position: relative; flex: none; width: 40px; height: 22px; border-radius: 999px;
+  background: var(--line); transition: background 0.15s;
+}
+.bdmap-switch-track::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--panel); box-shadow: 0 1px 2px rgba(0,0,0,0.25); transition: transform 0.15s;
+}
+.bdmap-switch input:checked + .bdmap-switch-track { background: var(--green); }
+.bdmap-switch input:checked + .bdmap-switch-track::after { transform: translateX(18px); }
+.bdmap-switch input:focus-visible + .bdmap-switch-track { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Map card themes: colour variables are set only on .bdmap-map-panel (inline style) ---------- */
+.bdmap-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px 18px; flex-wrap: wrap; }
+.bdmap-themes { display: flex; align-items: center; gap: 8px; }
+.bdmap-swatch {
+  width: 30px; height: 30px; padding: 0; border-radius: 50%; cursor: pointer;
+  border: 2px solid var(--line); -webkit-tap-highlight-color: transparent;
+}
+.bdmap-swatch.active { box-shadow: 0 0 0 2px var(--panel), 0 0 0 4px var(--green); }
+.bdmap-swatch:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
