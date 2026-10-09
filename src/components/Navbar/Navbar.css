@@ -1,0 +1,43 @@
+/* ---------- Navbar ---------- */
+.bdmap-lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--panel); }
+.bdmap-lang button {
+  border: none; background: none; color: var(--ink-soft); padding: 8px 16px; min-height: 36px;
+  font-family: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+}
+.bdmap-lang button.active { background: var(--green); color: var(--on-accent); }
+.bdmap-lang button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* nav bar */
+.bdmap-nav {
+  position: relative; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+}
+.bdmap-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); min-width: 0; }
+.bdmap-brand-name { font-family: 'Tiro Bangla', serif; font-size: clamp(1.05rem, 2.4vw, 1.35rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bdmap-nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.bdmap-nav-links a {
+  display: block; padding: 8px 14px; border-radius: 999px; color: var(--ink-soft); text-decoration: none;
+  font-size: 0.92rem; font-weight: 600;
+}
+.bdmap-nav-links a:hover { background: var(--bg); color: var(--ink); }
+.bdmap-nav-links a:focus-visible, .bdmap-brand:focus-visible, .bdmap-menu-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bdmap-nav-right { display: flex; align-items: center; gap: 10px; }
+.bdmap-menu-btn {
+  display: none; width: 40px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg); cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+}
+.bdmap-menu-btn span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); }
+
+@media (max-width: 699px) {
+  .bdmap-menu-btn { display: inline-flex; }
+  .bdmap-nav-links {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; align-items: stretch;
+    padding: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .bdmap-nav-links.open { display: flex; }
+  .bdmap-nav-links a { padding: 12px 14px; font-size: 1rem; }
+  .bdmap-brand-name { max-width: 36vw; font-size: 0.95rem; line-height: 1.15; white-space: normal; }
+  .bdmap-lang button { padding: 6px 10px; font-size: 0.8rem; min-height: 34px; }
+}

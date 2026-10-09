@@ -1,0 +1,40 @@
+/* ---------- Footer ---------- */
+.bdmap-footer {
+  border-radius: 18px; color: #FAF8F2;
+  background: linear-gradient(135deg, #0B4A38 0%, #127A58 100%);
+  padding: clamp(20px, 3.5vw, 36px);
+}
+.bdmap-footer-main { display: flex; justify-content: space-between; align-items: center; gap: 20px 32px; flex-wrap: wrap; }
+.bdmap-footer-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.bdmap-footer-brand .bdmap-brand-mark { width: 44px; height: 44px; border-radius: 12px; background: #FAF8F2; color: #0B4A38; }
+.bdmap-footer-brand .bdmap-brand-mark svg { width: 26px; height: 26px; }
+.bdmap-footer-title { margin: 0; font-family: 'Tiro Bangla', serif; font-size: 1.3rem; }
+.bdmap-footer-tagline { margin: 2px 0 0; font-size: 0.88rem; opacity: 0.85; }
+.bdmap-footer-credit { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; }
+.bdmap-social { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.bdmap-social a {
+  width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  color: #FAF8F2; border: 1.5px solid rgba(250,248,242,0.55); transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+.bdmap-social a:hover { background: #FAF8F2; color: #0B4A38; transform: translateY(-2px); }
+.bdmap-social a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.bdmap-social svg { width: 20px; height: 20px; }
+.bdmap-footer-copy {
+  margin: 20px 0 0; padding-top: 16px; border-top: 1px solid rgba(250,248,242,0.25);
+  font-size: 0.8rem; opacity: 0.8; text-align: center;
+}
+@media (max-width: 699px) {
+  .bdmap-footer-main { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- "Made by" button ---------- */
+.bdmap-madeby {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: inherit;
+  border-radius: 999px; padding: 5px 16px 5px 5px; font-size: 0.88rem; text-align: left;
+}
+.bdmap-madeby img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; flex: none; }
+.bdmap-madeby strong { font-weight: 700; }
+.bdmap-madeby:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.bdmap-madeby-footer { border: 1.5px solid rgba(250,248,242,0.55); background: transparent; color: #FAF8F2; }
+.bdmap-madeby-footer:hover { background: #FAF8F2; color: #0B4A38; }
+.bdmap-madeby-footer:focus-visible { outline-color: #fff; }

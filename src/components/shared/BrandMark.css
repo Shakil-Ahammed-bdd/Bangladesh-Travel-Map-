@@ -1,0 +1,6 @@
+/* The small map-pin logo (navbar + footer). */
+.bdmap-brand-mark {
+  flex: none; width: 34px; height: 34px; border-radius: 10px; background: var(--green); color: var(--on-accent);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.bdmap-brand-mark svg { width: 20px; height: 20px; }

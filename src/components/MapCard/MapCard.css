@@ -1,0 +1,61 @@
+/* The map card: avatar + title + count, the map itself, and the progress bar. */
+
+/* ---------- Map card: header ---------- */
+.bdmap-card-head { display: flex; align-items: center; gap: clamp(10px, 2vw, 22px); }
+.bdmap-avatar {
+  flex: none;
+  width: clamp(46px, 8vw, 96px);
+  aspect-ratio: 1;
+  border-radius: 22%;
+  border: clamp(2px, 0.4vw, 4px) solid var(--green);
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+}
+.bdmap-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bdmap-avatar-icon { width: 62%; height: 62%; opacity: 0.85; }
+.bdmap-head-text { flex: 1; min-width: 0; }
+.bdmap-eyebrow { color: var(--ink-soft); font-size: clamp(0.7rem, 1.3vw, 0.92rem); font-weight: 500; margin: 0 0 2px; }
+.bdmap-title {
+  font-size: clamp(1rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.2; margin: 0;
+  overflow-wrap: anywhere;
+}
+.bdmap-count {
+  flex: none; font-size: clamp(1.7rem, 5vw, 3.2rem); font-weight: 700; color: var(--green); line-height: 1;
+}
+.bdmap-count span { font-size: 0.5em; font-weight: 500; color: var(--ink-soft); }
+
+/* ---------- Map card: footer ---------- */
+.bdmap-progress { width: 100%; height: clamp(7px, 1.2vw, 12px); background: var(--line); border-radius: 999px; overflow: hidden; }
+.bdmap-progress-fill { height: 100%; background: var(--green); transition: width 0.3s ease; }
+.bdmap-foot-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap;
+  margin-top: 6px; font-size: clamp(0.78rem, 1.5vw, 1rem);
+}
+.bdmap-foot-row strong { font-weight: 700; }
+.bdmap-foot-row span { color: var(--ink-soft); }
+
+/* ---------- The map ---------- */
+.bdmap-map-scroll { position: relative; flex: 1; min-width: 0; min-height: 0; }
+.bdmap-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.bdmap-svg path {
+  fill: var(--sand);
+  stroke: var(--panel);
+  stroke-width: 0.8;
+  cursor: pointer;
+  transition: fill 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: hover) { .bdmap-svg path:hover { fill: var(--green-soft); } }
+.bdmap-svg path.visited { fill: var(--green); }
+.bdmap-svg path:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+
+/* ---------- District name labels ---------- */
+.bdmap-labels { pointer-events: none; }
+.bdmap-labels text {
+  font-family: inherit; font-size: 9.5px; font-weight: 700; fill: var(--ink);
+  stroke: var(--panel); stroke-width: 3.2px; paint-order: stroke; stroke-linejoin: round;
+}
+.bdmap-dot { fill: #E0343F; stroke: var(--panel); stroke-width: 1.1px; }

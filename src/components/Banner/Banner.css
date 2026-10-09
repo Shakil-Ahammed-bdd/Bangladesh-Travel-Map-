@@ -1,0 +1,26 @@
+/* ---------- Banner ---------- */
+.bdmap-banner {
+  position: relative; overflow: hidden; border-radius: 18px; color: #FAF8F2;
+  background: linear-gradient(135deg, #0B4A38 0%, #127A58 100%);
+  padding: clamp(22px, 4vw, 48px); min-height: clamp(210px, 28vw, 300px);
+  display: flex; align-items: center;
+}
+.bdmap-banner-body { position: relative; z-index: 1; max-width: 560px; }
+.bdmap-banner-eyebrow { margin: 0 0 8px; font-size: clamp(0.8rem, 1.4vw, 0.95rem); font-weight: 600; letter-spacing: 0.02em; opacity: 0.85; }
+.bdmap-banner-title { margin: 0 0 10px; font-family: 'Tiro Bangla', serif; font-weight: 400; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.1; }
+.bdmap-banner-text { margin: 0 0 18px; font-size: clamp(0.9rem, 1.6vw, 1.05rem); line-height: 1.6; opacity: 0.92; }
+.bdmap-banner-actions { display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; }
+.bdmap-cta {
+  border: none; border-radius: 999px; padding: 12px 24px; min-height: 44px; cursor: pointer;
+  background: #FAF8F2; color: #0B4A38; font-family: inherit; font-size: 0.95rem; font-weight: 700;
+}
+.bdmap-cta:hover { background: #fff; }
+.bdmap-cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.bdmap-banner-stat { font-size: 0.9rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.16); }
+.bdmap-banner-map {
+  position: absolute; z-index: 0; right: clamp(-30px, 3vw, 56px); top: 50%; transform: translateY(-50%);
+  height: 118%; width: auto; opacity: 0.28; pointer-events: none;
+}
+.bdmap-banner-map path { fill: rgba(255,255,255,0.45); stroke: #127A58; stroke-width: 0.8; }
+.bdmap-banner-map path.on { fill: #FAF8F2; }
+@media (min-width: 700px) { .bdmap-banner-map { opacity: 0.9; height: 112%; } }

@@ -1,0 +1,45 @@
+/* The "Made by" pop-up card. */
+
+.bdmap-modal-backdrop {
+  position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 16px; background: rgba(12, 18, 16, 0.58);
+}
+.bdmap-modal {
+  position: relative; width: min(440px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px);
+  overflow-y: auto; background: var(--panel); color: var(--ink); border-radius: 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.bdmap-modal-photo {
+  display: block; 
+  width: 100%; 
+  height: clamp(240px, 46dvh, 380px); 
+  object-fit: cover; 
+  object-position: 50% 10%; 
+  background: #fff;
+}
+.bdmap-modal-close {
+  position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; padding: 0; border: none; border-radius: 50%;
+  background: rgba(255,255,255,0.92); color: #22201B; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.bdmap-modal-close svg { width: 20px; height: 20px; }
+.bdmap-modal-close:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.bdmap-modal-body { padding: 22px 24px 26px; }
+.bdmap-modal-name { margin: 0; font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+.bdmap-modal-role { margin: 4px 0 14px; color: var(--ink-soft); font-size: 0.92rem; }
+.bdmap-modal-text { margin: 0 0 18px; font-size: 0.97rem; line-height: 1.75; }
+.bdmap-modal-connect { margin: 0 0 10px; color: var(--ink-soft); font-size: 0.85rem; font-weight: 700; }
+.bdmap-modal-social { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.bdmap-modal-social a {
+  width: 48px; height: 48px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; transition: transform 0.15s;
+}
+.bdmap-modal-social a:hover { transform: translateY(-2px); }
+.bdmap-modal-social a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.bdmap-modal-social svg { width: 22px; height: 22px; }
+@media (prefers-reduced-motion: no-preference) {
+  .bdmap-modal-backdrop { animation: bdmap-fade 0.18s ease-out; }
+  .bdmap-modal { animation: bdmap-pop 0.22s ease-out; }
+  @keyframes bdmap-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes bdmap-pop { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
+}

@@ -27,3 +27,24 @@ export const THEMES = [
 ];
 
 export const DEFAULT_THEME_ID = 'forest';
+
+export function getTheme(id) {
+  return THEMES.find((th) => th.id === id) || THEMES[0];
+}
+
+/** CSS variables for the map card only — the rest of the page keeps its own colours. */
+export function cardThemeStyle(theme) {
+  const c = theme.colors;
+  return {
+    '--bg': c.panel, '--panel': c.bg, '--ink': c.ink, '--ink-soft': c.soft, '--line': c.line,
+    '--green': c.accent, '--green-soft': c.accentSoft, '--sand': c.sand, '--on-accent': c.onAccent,
+    '--focus': c.focus, '--err': c.err,
+    colorScheme: theme.dark ? 'dark' : 'light',
+  };
+}
+
+/** CSS variables that colour the "visited" district buttons in the list. */
+export function chipThemeStyle(theme) {
+  const c = theme.colors;
+  return { '--chip-visited': c.accent, '--chip-on': c.onAccent, '--chip-hover': c.accentSoft };
+}
