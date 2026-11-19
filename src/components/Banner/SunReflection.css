@@ -1,0 +1,25 @@
+.bdmap-sun-reflection {
+  position: absolute;
+  z-index: 5;
+  top: 54%;
+  left: 71%;
+  width: clamp(130px, 25vw, 320px);
+  height: 43%;
+  transform: translateX(-50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.bdmap-sun-reflection__glints {
+  transform-origin: center top;
+  animation: bdmap-reflection-shimmer 4.8s ease-in-out infinite alternate;
+}
+
+@keyframes bdmap-reflection-shimmer {
+  from { opacity: 0.34; transform: translateX(-4px) scaleX(0.92); }
+  to { opacity: 0.82; transform: translateX(5px) scaleX(1.05); }
+}
+
+@media (max-width: 520px) {
+  .bdmap-sun-reflection { left: 73%; width: 35vw; }
+}

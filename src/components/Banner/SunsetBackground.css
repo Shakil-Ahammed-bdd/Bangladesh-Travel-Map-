@@ -1,0 +1,16 @@
+.bdmap-sunset-sky {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 74% 49%, rgba(255, 215, 143, 0.56) 0, rgba(255, 191, 131, 0.24) 15%, transparent 36%),
+    linear-gradient(174deg, #713e68 0%, #bd5265 29%, #ee7958 56%, #f5ae69 75%, #f8cc83 100%);
+}
+
+.bdmap-sunset-sky::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(60, 39, 64, 0.24), transparent 68%), linear-gradient(0deg, rgba(67, 49, 53, 0.1), transparent 42%);
+  content: '';
+}

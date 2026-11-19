@@ -1,14 +1,30 @@
 import districtsData from '../../data/districtsData';
 import { formatNum } from '../../utils/format';
+import RiverLandscape from './RiverLandscape';
+import RiverWater from './RiverWater';
+import Sailboat from './Sailboat';
+import Sun from './Sun';
+import SunReflection from './SunReflection';
+import SunsetBackground from './SunsetBackground';
+import WaterLilyCollection from './WaterLilyCollection';
+import WaterWaves from './WaterWaves';
 import './Banner.css';
 
 /**
- * Green hero section at the top: title, short text, "start" button and a progress chip.
- * The faint map on the right fills in as the visitor marks districts.
+ * Sunset river hero section; the map, copy, CTA, and visit count remain interactive.
  */
 export default function Banner({ t, lang, visited, count, total, onStart }) {
   return (
     <section className="bdmap-banner" aria-labelledby="bdmap-banner-title">
+      <SunsetBackground />
+      <Sun />
+      <RiverLandscape />
+      <RiverWater />
+      <SunReflection />
+      <WaterWaves />
+      <Sailboat />
+      <WaterLilyCollection />
+
       <svg className="bdmap-banner-map" viewBox={`0 0 ${districtsData.width} ${districtsData.height}`} aria-hidden="true">
         {districtsData.districts.map((d) => (
           <path key={d.name_en} d={d.d} className={visited[d.name_en] ? 'on' : ''} />

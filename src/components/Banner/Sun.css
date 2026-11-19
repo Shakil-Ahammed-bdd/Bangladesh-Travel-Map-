@@ -1,0 +1,22 @@
+.bdmap-sunset-sun {
+  position: absolute;
+  z-index: 1;
+  top: 37%;
+  left: 71%;
+  width: clamp(54px, 9vw, 104px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff1bd;
+  box-shadow: 0 0 22px 8px rgba(255, 223, 157, 0.47), 0 0 76px 28px rgba(255, 207, 142, 0.28);
+  transform: translate(-50%, -50%);
+  animation: bdmap-sun-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes bdmap-sun-glow {
+  from { box-shadow: 0 0 22px 8px rgba(255, 223, 157, 0.42), 0 0 68px 24px rgba(255, 207, 142, 0.24); }
+  to { box-shadow: 0 0 29px 11px rgba(255, 239, 191, 0.6), 0 0 88px 34px rgba(255, 207, 142, 0.34); }
+}
+
+@media (max-width: 520px) {
+  .bdmap-sunset-sun { top: 34%; left: 73%; }
+}

@@ -1,0 +1,41 @@
+.bdmap-water-lily {
+  position: absolute;
+  z-index: 7;
+  bottom: 7%;
+  width: 96px;
+  height: 96px;
+  transform: scale(var(--lily-scale, 1));
+  transform-origin: 50% 80%;
+  animation: bdmap-lily-float 4.8s ease-in-out calc(var(--lily-delay, 0s) + 1.7s) infinite;
+}
+
+.bdmap-water-lily__leaf {
+  position: absolute;
+  bottom: 8px;
+  z-index: 1;
+  width: 36px;
+  height: 18px;
+  border: 1px solid rgba(203, 222, 173, 0.56);
+  border-radius: 100% 8% 100% 8%;
+  background: linear-gradient(140deg, #88a781, #446b5c 76%);
+}
+
+.bdmap-water-lily__leaf--left { left: 6px; transform: rotate(20deg); }
+.bdmap-water-lily__leaf--right { right: 6px; transform: rotate(-12deg) scaleX(-1); }
+
+.bdmap-water-lily__ripple {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 72px;
+  height: 15px;
+  border: 1px solid rgba(230, 238, 210, 0.52);
+  border-radius: 50%;
+  background: rgba(154, 183, 166, 0.12);
+  transform: translateX(-50%);
+}
+
+@keyframes bdmap-lily-float {
+  0%, 100% { translate: 0 0; rotate: -1deg; }
+  50% { translate: 0 -4px; rotate: 1deg; }
+}

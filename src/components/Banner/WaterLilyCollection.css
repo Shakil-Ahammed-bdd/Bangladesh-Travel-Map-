@@ -1,0 +1,24 @@
+.bdmap-water-lilies {
+  position: absolute;
+  z-index: 7;
+  inset: 55% 0 0;
+  pointer-events: none;
+}
+
+.bdmap-water-lily--one { left: 24%; }
+.bdmap-water-lily--two { left: 43%; bottom: 10%; }
+.bdmap-water-lily--three { left: 65%; bottom: 5%; }
+.bdmap-water-lily--four { left: 83%; bottom: 11%; }
+
+@media (max-width: 700px) {
+  .bdmap-water-lily--two { left: 42%; }
+  .bdmap-water-lily--four { display: none; }
+}
+
+@media (max-width: 420px) {
+  .bdmap-water-lily { width: 82px; height: 82px; }
+  .bdmap-water-lily-bloom { width: 64px; height: 54px; }
+  .bdmap-water-lily--one { left: 10%; }
+  .bdmap-water-lily--two { left: 41%; }
+  .bdmap-water-lily--three { left: 72%; }
+}

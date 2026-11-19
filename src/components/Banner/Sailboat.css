@@ -1,0 +1,59 @@
+.bdmap-sailboat {
+  position: absolute;
+  z-index: 6;
+  top: 57%;
+  left: 6%;
+  width: clamp(72px, 11vw, 118px);
+  pointer-events: none;
+  animation: bdmap-sailboat-cross 30s ease-in-out infinite alternate;
+}
+
+.bdmap-sailboat__orientation {
+  display: block;
+  animation: bdmap-sailboat-facing 60s steps(1, end) infinite;
+}
+
+.bdmap-sailboat__art {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 3px 4px rgba(24, 49, 50, 0.3));
+  animation: bdmap-sailboat-bob 3.8s ease-in-out infinite;
+}
+
+.bdmap-sailboat__mast { fill: none; stroke: #f8ebd3; stroke-width: 3; stroke-linecap: round; }
+.bdmap-sailboat__sail--light { fill: #fff0d4; }
+.bdmap-sailboat__sail--warm { fill: #e9947e; }
+.bdmap-sailboat__hull { fill: #553d42; stroke: #f2c993; stroke-width: 2; }
+.bdmap-sailboat__waterline { fill: none; stroke: rgba(235, 238, 213, 0.8); stroke-width: 2; stroke-linecap: round; }
+.bdmap-sailboat__sun { fill: #f5c879; }
+
+@keyframes bdmap-sailboat-cross {
+  from { left: 6%; }
+  to { left: calc(94% - clamp(72px, 11vw, 118px)); }
+}
+
+@keyframes bdmap-sailboat-facing {
+  0%, 49.99% { transform: scaleX(1); }
+  50%, 100% { transform: scaleX(-1); }
+}
+
+@keyframes bdmap-sailboat-bob {
+  0%, 100% { translate: 0 0; rotate: -1deg; }
+  50% { translate: 0 -3px; rotate: 1deg; }
+}
+
+@media (max-width: 520px) {
+  .bdmap-sailboat { top: 58%; width: 76px; }
+
+  @keyframes bdmap-sailboat-cross {
+    from { left: 5%; }
+    to { left: calc(95% - 76px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bdmap-sailboat { left: 50%; animation: none; }
+  .bdmap-sailboat__orientation { animation: none; transform: scaleX(1); }
+  .bdmap-sailboat__art { animation: none; }
+}

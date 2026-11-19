@@ -1,0 +1,50 @@
+.bdmap-water-lily-bloom {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  width: 74px;
+  height: 62px;
+  overflow: visible;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  animation: bdmap-lily-cycle 12s ease-in-out var(--lily-delay, 0s) infinite both;
+}
+
+.bdmap-water-lily-bloom__petal {
+  fill: #f7dce2;
+  stroke: rgba(218, 147, 167, 0.78);
+  stroke-width: 0.8;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bdmap-lily-petals 12s ease-in-out var(--lily-delay, 0s) infinite both;
+}
+
+.bdmap-water-lily-bloom__petal--back { fill: #f7dce2; }
+.bdmap-water-lily-bloom__petal--front { fill: #fffaf6; }
+.bdmap-water-lily-bloom__center { fill: #f2c56f; stroke: #fff3cc; stroke-width: 1.4; }
+
+@keyframes bdmap-lily-cycle {
+  0%, 5%, 42%, 100% { opacity: 0; transform: translate(-50%, 24px) scale(0.22); }
+  15%, 32% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  37% { opacity: 0.72; transform: translate(-50%, 7px) scale(0.82); }
+}
+
+@keyframes bdmap-lily-petals {
+  0%, 5%, 42%, 100% { opacity: 0.42; transform: scale(0.12, 0.34); }
+  18%, 32% { opacity: 1; transform: scale(1); }
+  37% { opacity: 0.72; transform: scale(0.78, 0.86); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bdmap-water-lily-bloom {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  .bdmap-water-lily-bloom__petal {
+    animation: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+}

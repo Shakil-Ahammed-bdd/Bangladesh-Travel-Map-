@@ -1,0 +1,28 @@
+.bdmap-water-waves {
+  position: absolute;
+  z-index: 6;
+  inset: 55% 0 0;
+  width: 100%;
+  height: 45%;
+  pointer-events: none;
+}
+
+.bdmap-water-waves use {
+  fill: none;
+  stroke: rgba(222, 232, 210, 0.33);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.bdmap-water-waves__track--slow { animation: bdmap-wave-drift 24s linear infinite; }
+.bdmap-water-waves__track--fast { animation: bdmap-wave-drift 16s linear infinite reverse; opacity: 0.66; }
+
+@keyframes bdmap-wave-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-240px); }
+}
+
+@media (max-width: 520px) {
+  .bdmap-water-waves__track--fast { display: none; }
+  .bdmap-water-waves__track--slow { animation-duration: 30s; }
+}

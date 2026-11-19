@@ -1,0 +1,15 @@
+.bdmap-river-landscape {
+  position: absolute;
+  z-index: 4;
+  top: 43%;
+  left: 0;
+  width: 100%;
+  height: 18%;
+  overflow: visible;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 28%, #000 62%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 28%, #000 62%);
+}
+
+.bdmap-river-landscape__far-bank { fill: #604651; opacity: 0.66; }
+.bdmap-river-landscape__trees { fill: #354b46; opacity: 0.9; }
